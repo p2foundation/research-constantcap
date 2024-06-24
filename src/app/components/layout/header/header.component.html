@@ -1,0 +1,112 @@
+<!-- Start Topbar Wrap Area -->
+<div
+    class="topbar-wrap-area d-none"
+    [ngClass]="{'d-block': router?.url === '/home-6' || router?.url === '/'}"
+>
+    <div class="container-fluid">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-2 col-md-2">
+                <div class="topbar-content">
+                    <span>Research </span>
+                </div>
+
+            </div>
+
+            <div class="col-lg-10 col-md-10">
+                <!--gse ticker-->
+                <app-gse-ticker></app-gse-ticker>
+                <!--\gse ticker-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Topbar Wrap Area -->
+
+<!-- Start Navbar Area -->
+<div
+    class="{{navClass}}"
+    [ngClass]="{'p-relative': router?.url === '/home-5' || router?.url === '/home-8'}"
+>
+    <div class="kirin-nav">
+        <div class="{{navContainer}}">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <!--                <a class="navbar-brand" routerLink="/">-->
+                <!--                    <img src="{{logo}}" class="main-logo" alt="logo">-->
+                <!--                    <img src="assets/img/black-logo.png" class="optional-logo" alt="logo">-->
+                <!--                </a>-->
+
+                <!--                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"-->
+                <!--                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"-->
+                <!--                        aria-expanded="false" aria-label="Toggle navigation">-->
+                <!--                    <span class="navbar-toggler-icon"></span>-->
+                <!--                </button>-->
+
+                <span>
+                    <a class="navbar-brand" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Dashboard</a>
+                </span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarText"
+                        aria-controls="navbarText"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                            <a routerLink="equity" routerLinkActive="active" class="nav-link">Equity</a>
+                        </li>
+
+                        <li class="nav-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                            <a routerLink="/fixed-income" routerLinkActive="active" class="nav-link">Fixed Income</a>
+                        </li>
+
+                        <li class="nav-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                            <a routerLink="/bond-market" routerLinkActive="active" class="nav-link">Bond Market</a>
+                        </li>
+
+                        <li class="nav-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                            <a routerLink="/corporate" routerLinkActive="active" class="nav-link">Corporate</a>
+                        </li>
+
+                        <li class="nav-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                            <a routerLink="/market-data" routerLinkActive="active" class="nav-link">Market Data</a>
+                        </li>
+
+
+                        <li class="nav-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                            <a routerLink="/report" routerLinkActive="active" class="nav-link">Report</a>
+                        </li>
+
+                        <li class="nav-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+                            <a routerLink="/ai" routerLinkActive="active" class="nav-link">ResearchGPT</a>
+                        </li>
+
+                    </ul>
+
+                    <div class="others-options">
+                        <!--                        <div class="option-item"><i class="search-btn flaticon-search"></i>-->
+                        <!--                            <i class="close-btn fas fa-times"></i>-->
+                        <!--                            <div class="search-overlay search-popup">-->
+                        <!--                                <div class='search-box'>-->
+                        <!--                                    <form class="search-form">-->
+                        <!--                                        <input class="search-input" name="search" placeholder="Search" type="text">-->
+                        <!--                                        <button class="search-button" type="submit"><i class="fas fa-search"></i>-->
+                        <!--                                        </button>-->
+                        <!--                                    </form>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+
+                        <a routerLink="/contact" class="btn btn-primary">Admin</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- End Navbar Area -->
