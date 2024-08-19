@@ -93,9 +93,16 @@ export class AuthService {
   public removeUser(userId: string): Observable<any> {
     return this.httpClient.delete(`${this.asURL}/auth/remove/${userId}`)
       .pipe(
-        tap(rRes => this.log(`AuthService: user deleted successfully ..`)),
+        tap((rRes) => this.log(`AuthService: user deleted successfully ..`)),
         catchError(this.handleError('DELETE USER', []))
       );
+  }
+
+  isTokenExpired(token: string): boolean {
+    // Implement your token expiration logic here
+    // For example, you could check the token's expiration date
+    const expirationDate = JSON.parse(atob(token.split('.')[1])).exp;
+    return expirationDate < Date.now() / 1000;
   }
 
   public logout() {

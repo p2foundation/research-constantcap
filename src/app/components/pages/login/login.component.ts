@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   public isLoading = false;
+  returnUrl: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,6 +44,9 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8)]]
     });
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
+
   }
 
   async onLogin(form: any) {
@@ -51,17 +55,19 @@ export class LoginComponent implements OnInit {
       this.toastr.warning('No User Input');
       return;
     }
-
+  
     await this.showLoader();
     this.loginParams.email = form.email || '';
     // this.loginParams.mobile = form.mobile;
     this.loginParams.password = form.password;
-
+  
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'];
+  
     this.authService.loginUser(this.loginParams)
       .subscribe({
         next: async (losfRes) => {
           console.log(`LOGIN access response ==> ${JSON.stringify(losfRes)}`);
-
+  
           if (losfRes.accessToken) {
             this.authService.storeUserToken(losfRes.accessToken);
             this.authService.storeUserDataInLocalStorage(losfRes.user);
@@ -69,24 +75,28 @@ export class LoginComponent implements OnInit {
             this.message = 'Hurray! Successfully login';
             this.toastr.success(this.message);
             await this.hideLoader();
-            this.router.navigate(['./']);
+            if (returnUrl) {
+              this.router.navigate([returnUrl]);
+            } else {
+              this.router.navigate(['./']);
+            }
           } else {
             await this.hideLoader();
             this.message = 'Unauthorised accessed🛡️';
             this.toastr.warning(this.message);
             this.authService.removeToken();
           }
-
+  
         },
         error: async (losError) => {
           await this.hideLoader();
           console.error('LOGIN error ===>', losError);
           this.toastr.error(losError);
         }
-
+  
       });
   }
-
+  
   logout() {
     this.authService.logout();
     this.router.navigateByUrl('/');

@@ -36,13 +36,8 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="firstName"
-                            placeholder="First Name"
-                            formControlName="firstName"
-                            >
+                        <input type="text" class="form-control" id="firstName" placeholder="First Name"
+                            formControlName="firstName">
                         <label for="firstName">First Name</label>
                     </div>
                     <div *ngIf="signupForm.controls['firstName'].invalid && (signupForm.controls['firstName'].dirty || signupForm.controls['firstName'].touched)"
@@ -53,13 +48,8 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input 
-                            type="text"
-                            class="form-control"
-                            id="lastName"
-                            placeholder="Last Name"
-                            formControlName="lastName"
-                            >
+                        <input type="text" class="form-control" id="lastName" placeholder="Last Name"
+                            formControlName="lastName">
                         <label for="lastName">Last Name</label>
                     </div>
                     <div *ngIf="signupForm.controls['lastName'].invalid && (signupForm.controls['lastName'].dirty || signupForm.controls['lastName'].touched)"
@@ -69,15 +59,10 @@
                         </div>
                     </div>
 
-                    
+
                     <div class="form-floating mb-3">
-                        <input 
-                            type="email"
-                            class="form-control"
-                            id="email"
-                            placeholder="Email Address"
-                            formControlName="email"
-                            >
+                        <input type="email" class="form-control" id="email" placeholder="Email Address"
+                            formControlName="email">
                         <label for="email">Email Address</label>
                     </div>
                     <div *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)"
@@ -88,13 +73,8 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input 
-                            type="text"
-                            class="form-control"
-                            id="phoneNumber"
-                            placeholder="Phone Number"
-                            formControlName="phoneNumber"
-                            >
+                        <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number"
+                            formControlName="phoneNumber">
                         <label for="phoneNumber">Phone Number</label>
                     </div>
                     <div *ngIf="signupForm.controls['phoneNumber'].invalid && (signupForm.controls['phoneNumber'].dirty || signupForm.controls['phoneNumber'].touched)"
@@ -105,11 +85,7 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input
-                            type="password"
-                            class="form-control"
-                            id="password"
-                            placeholder="e.g. Aabz-0123@"
+                        <input type="password" class="form-control" id="password" placeholder="e.g. Aabz-0123@"
                             formControlName="password">
                         <label for="password">Password</label>
                     </div>
@@ -118,6 +94,10 @@
                         <div *ngIf="signupForm.controls['password'].errors.required">
                             Password is required.
                         </div>
+                    </div>
+
+                    <div class="loginLink">
+                        <a (click)="goToLogin()"><h5><small><i>Already registered, goto LOGIN page.</i></small></h5></a>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-sm mt-2">Submit</button>
