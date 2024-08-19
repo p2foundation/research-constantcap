@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-    localServer: 'http://localhost:2021/api/v1/',
+    localServer: 'http://localhost:2021/api/v1',
     vercel: '',
     aws: ''
 };

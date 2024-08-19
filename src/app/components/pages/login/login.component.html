@@ -1,1 +1,61 @@
-<p>login works!</p>
+<!-- Start Page Title Area -->
+<!--<div class="page-title-area item-bg2">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>Login</h2>
+        </div>
+    </div>
+
+    <div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+</div>-->
+<!-- End Page Title Area -->
+
+<!-- Start Services Details Area -->
+<section class="services-details-area ptb-110">
+    <div class="container">
+        <div class="services-details-overview">
+            <div class="services-details-desc">
+                <h3>Login</h3>
+                <form id="loginForm" [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
+                    <div class="form-floating mb-3">
+                        <input 
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            placeholder="e.g. info@domain.com"
+                            formControlName="email"
+                            >
+                        <label for="email">Email Address</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            placeholder="e.g. 0123456789"
+                            formControlName="password">
+                        <label for="password">Password</label>
+                    </div>
+                    <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="loginForm.controls['password'].errors.required">
+                            Password is required.
+                        </div>
+                    </div>
+
+                    <div class="registerLink">
+                        <a (click)="goToRegister()"><h5><small><i>Go to Register page.</i></small></h5></a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-sm mt-2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Services Details Area -->

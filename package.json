@@ -23,12 +23,14 @@
     "jquery": "^3.7.1",
     "ngx-owl-carousel": "^2.0.7",
     "ngx-toastr": "^19.0.0",
+    "ngx-webstorage": "^18.0.0",
+    "ngx-webstorage-service": "^5.0.0",
     "popper.js": "^1.16.1",
     "rxjs": "~7.8.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
-  "devDependencies": {
+  "m": {
     "@angular-devkit/build-angular": "^17.0.7",
     "@angular/cli": "~17.0.7",
     "@angular/compiler-cli": "^17.0.7",

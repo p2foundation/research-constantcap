@@ -1,3 +1,4 @@
+
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './components/pages/home/home.component';
@@ -13,6 +14,9 @@ import {CorporateComponent} from "./components/pages/corporate/corporate.compone
 import {MarketDataComponent} from "./components/pages/market-data/market-data.component";
 import {EquityComponent} from "./components/pages/equity/equity.component";
 import { HomeSevenComponent } from './components/pages/home-seven/home-seven.component';
+import { LoginComponent } from './components/pages/login/login.component';
+import { SignupComponent } from './components/pages/signup/signup.component';
+import { AuthGuard } from './Services/auth/auth.guard.service';
 
 const routes: Routes = [
     {path: '', component: HomeSevenComponent},
@@ -21,16 +25,39 @@ const routes: Routes = [
     {path: 'faq', component: FaqComponent},
     {path: 'coming-soon', component: ComingSoonComponent},
     {path: 'contact', component: ContactComponent},
-    {path: 'equity', component: EquityComponent},
-    {path: 'fixed-income', component: FixedIncomeComponent},
-    {path: 'bond-market', component: BondMarketComponent},
-    {path: 'corporate', component: CorporateComponent},
-    {path: 'market-data', component: MarketDataComponent},
+    {
+        path: 'equity', 
+        component: EquityComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'fixed-income', 
+        component: FixedIncomeComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'bond-market', 
+        component: BondMarketComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'corporate', 
+        component: CorporateComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'market-data', 
+        component: MarketDataComponent,
+        canActivate: [AuthGuard]
+    },
     // {path: 'report', component: ProjectDetailsComponent},
     // {path: 'ai', component: ProjectDetailsComponent},
     // {path: 'admin', component: ProjectDetailsComponent},
     // Here add new pages component
+    {path: 'login', component: LoginComponent},
+    {path: 'signup', component: SignupComponent},
     {path: '**', component: NotFoundComponent} // This line will remain down from the whole pages component list
+    
 ];
 
 @NgModule({

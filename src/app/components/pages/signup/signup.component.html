@@ -1,1 +1,129 @@
-<p>signup works!</p>
+<!-- Start Page Title Area -->
+<!-- <div class="page-title-area item-bg2">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>Register</h2>
+
+        </div>
+    </div>
+
+    <div class="lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+</div> -->
+<!-- End Page Title Area -->
+
+<!-- Start Services Details Area -->
+<section class="services-details-area ptb-110">
+    <div class="container">
+        <div class="services-details-overview">
+            <div class="services-details-desc">
+                <h3>Register</h3>
+                <form id="signupForm" [formGroup]="signupForm" (ngSubmit)="registerNewUser(signupForm.value)">
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="roleName" aria-label="roleName" formControlName="roleName">
+                            <!-- <option selected>Select Role</option> -->
+                            <option selected value="USER">USER</option>
+                            <option value="RESEARCH">RESEARCH</option>
+                            <option value="ANALYST">ANALYST</option>
+                            <option value="MANAGER">MANAGER</option>
+                            <option value="ADMINISTRATOR">ADMINISTRATOR</option>
+                            <option value="SUPPORT">SUPPORT</option>
+                        </select>
+                        <label for="roleName">ROLE NAME</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="firstName"
+                            placeholder="First Name"
+                            formControlName="firstName"
+                            >
+                        <label for="firstName">First Name</label>
+                    </div>
+                    <div *ngIf="signupForm.controls['firstName'].invalid && (signupForm.controls['firstName'].dirty || signupForm.controls['firstName'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="signupForm.controls['firstName'].errors.required">
+                            First Name is required.
+                        </div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input 
+                            type="text"
+                            class="form-control"
+                            id="lastName"
+                            placeholder="Last Name"
+                            formControlName="lastName"
+                            >
+                        <label for="lastName">Last Name</label>
+                    </div>
+                    <div *ngIf="signupForm.controls['lastName'].invalid && (signupForm.controls['lastName'].dirty || signupForm.controls['lastName'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="signupForm.controls['lastName'].errors.required">
+                            Last Name is required.
+                        </div>
+                    </div>
+
+                    
+                    <div class="form-floating mb-3">
+                        <input 
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            placeholder="Email Address"
+                            formControlName="email"
+                            >
+                        <label for="email">Email Address</label>
+                    </div>
+                    <div *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="signupForm.controls['email'].errors.required">
+                            Email Address is required.
+                        </div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input 
+                            type="text"
+                            class="form-control"
+                            id="phoneNumber"
+                            placeholder="Phone Number"
+                            formControlName="phoneNumber"
+                            >
+                        <label for="phoneNumber">Phone Number</label>
+                    </div>
+                    <div *ngIf="signupForm.controls['phoneNumber'].invalid && (signupForm.controls['phoneNumber'].dirty || signupForm.controls['phoneNumber'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="signupForm.controls['phoneNumber'].errors.required">
+                            Phone Number is required.
+                        </div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            placeholder="e.g. Aabz-0123@"
+                            formControlName="password">
+                        <label for="password">Password</label>
+                    </div>
+                    <div *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="signupForm.controls['password'].errors.required">
+                            Password is required.
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-sm mt-2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Services Details Area -->
