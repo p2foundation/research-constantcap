@@ -1,8 +1,5 @@
 <!-- Start Topbar Wrap Area -->
-<div
-    class="topbar-wrap-area d-none"
-    [ngClass]="{'d-block': router?.url === '/home-6' || router?.url === '/'}"
->
+<div class="topbar-wrap-area d-none" [ngClass]="{'d-block': router?.url === '/home-6' || router?.url === '/'}">
     <div class="container-fluid">
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-2 col-md-2">
@@ -23,10 +20,7 @@
 <!-- End Topbar Wrap Area -->
 
 <!-- Start Navbar Area -->
-<div
-    class="{{navClass}}"
-    [ngClass]="{'p-relative': router?.url === '/home-5' || router?.url === '/home-8'}"
->
+<div class="{{navClass}}" [ngClass]="{'p-relative': router?.url === '/home-5' || router?.url === '/home-8'}">
     <div class="kirin-nav">
         <div class="{{navContainer}}">
             <nav class="navbar navbar-expand-md navbar-light">
@@ -42,13 +36,11 @@
                 <!--                </button>-->
 
                 <span>
-                    <a class="navbar-brand" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Dashboard</a>
+                    <a class="navbar-brand" routerLink="/" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}">Dashboard</a>
                 </span>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarText"
-                        aria-controls="navbarText"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -101,7 +93,23 @@
                         <!--                            </div>-->
                         <!--                        </div>-->
 
-                        <a routerLink="/login" class="btn btn-primary">Login</a>
+                        <!-- Login/Logout and Profile Menu -->
+                        <div class="nav-item dropdown" *ngIf="!isLoggedIn">
+                            <a class="nav-link" routerLink="/login">Login</a>
+                        </div>
+
+                        <div class="nav-item dropdown" *ngIf="isLoggedIn">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="assets/img/avatar.png" alt="Avatar" class="avatar">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" routerLink="/profile">Profile</a>
+                                <a class="dropdown-item" routerLink="/dashboard">Dashboard</a>
+                                <a class="dropdown-item" routerLink="/settings">Settings</a>
+                                <a class="dropdown-item" (click)="logout()">Logout</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>

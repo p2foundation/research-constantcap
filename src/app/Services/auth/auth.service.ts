@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, of, throwError } from "rxjs";
+import { BehaviorSubject, Observable, of, throwError } from "rxjs";
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from "src/environments/environment";
 import { FormGroup } from "@angular/forms";
@@ -13,6 +13,8 @@ export class AuthService {
   private asURL = environment.localServer;
   isLoggedIn = false;
   redirectUrl: string;
+  private isLoggedInSource = new BehaviorSubject<boolean>(this.checkLoggedIn());
+  isLoggedIn$ = this.isLoggedInSource.asObservable();
 
   constructor(
     private httpClient: HttpClient
@@ -29,45 +31,19 @@ export class AuthService {
   }
 
   loginUser(luInput: any): Observable<any> {
-    this.log(`LOGIN INPUT ==> ${JSON.stringify(luInput)}`);
     return this.httpClient.post(`${this.asURL}/auth/login`, luInput)
       .pipe(
         tap((luRes) => {
           this.log(`LOGIN USER => ${JSON.stringify(luRes)}`);
-          this.isLoggedIn = true;
+          // this.isLoggedIn = true;
+          this.isLoggedInSource.next(true);
+
         }),
         catchError(this.handleError('LOGIN', []))
       );
   }
 
 
-  registerUserOld(ruInput: any): Observable<any> {
-    this.log(`LOGIN INPUT ==> ${JSON.stringify(ruInput)}`);
-
-    const getCircularReplacer = () => {
-      const seen = new WeakSet();
-      return (key, value) => {
-        if (typeof value === 'object' && value !== null) {
-          if (seen.has(value)) {
-            return;
-          }
-          seen.add(value);
-        }
-        return value;
-      };
-    };
-
-    const jsonData = JSON.stringify(ruInput.value, getCircularReplacer());
-
-    return this.httpClient
-      .post<any>(`${this.asURL}/auth/register`, jsonData)
-      .pipe(
-        tap((ruRes) => {
-          this.log(`RESGISTER USER => ${JSON.stringify(jsonData)}`);
-        }),
-        catchError(this.handleError('REGISTER USER', []))
-      )
-  }
 
   registerUser(signupParams: SignupParams): Observable<any> {
     return this.httpClient

@@ -28,6 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './Services/auth/auth.service';
 import { AuthGuard } from './Services/auth/auth.guard.service';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { AuthGuard } from './Services/auth/auth.guard.service';
         FormsModule,
         ReactiveFormsModule,
         CommonModule,
+        RouterModule,
     ],
     providers: [
         AuthService,
