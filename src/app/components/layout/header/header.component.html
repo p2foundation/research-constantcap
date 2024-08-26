@@ -68,7 +68,6 @@
                             <a routerLink="/market-data" routerLinkActive="active" class="nav-link">Market Data</a>
                         </li>
 
-
                         <li class="nav-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
                             <a routerLink="/report" routerLinkActive="active" class="nav-link">Report</a>
                         </li>
@@ -80,28 +79,16 @@
                     </ul>
 
                     <div class="others-options">
-                        <!--                        <div class="option-item"><i class="search-btn flaticon-search"></i>-->
-                        <!--                            <i class="close-btn fas fa-times"></i>-->
-                        <!--                            <div class="search-overlay search-popup">-->
-                        <!--                                <div class='search-box'>-->
-                        <!--                                    <form class="search-form">-->
-                        <!--                                        <input class="search-input" name="search" placeholder="Search" type="text">-->
-                        <!--                                        <button class="search-button" type="submit"><i class="fas fa-search"></i>-->
-                        <!--                                        </button>-->
-                        <!--                                    </form>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
-
                         <!-- Login/Logout and Profile Menu -->
                         <div class="nav-item dropdown" *ngIf="!isLoggedIn">
-                            <a class="nav-link" routerLink="/login">Login</a>
+                            <!-- <a class="nav-link" routerLink="/login">Login</a> -->
+                            <a routerLink="/login" class="btn btn-primary">Login |</a>
                         </div>
 
                         <div class="nav-item dropdown" *ngIf="isLoggedIn">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="assets/img/avatar.png" alt="Avatar" class="avatar">
+                                <img src="assets/img/avatar.png" alt="Avatar" class="avatar" width="30px">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" routerLink="/profile">Profile</a>

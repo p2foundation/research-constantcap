@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AuthService } from 'src/app/Services/auth/auth.service';
-import * as crypto from 'crypto';
 
 @Component({
     selector: 'app-header',
@@ -33,9 +32,11 @@ export class HeaderComponent implements OnInit {
         location: Location,
         private authService: AuthService
     ) {
-        const userEmail = 'user@example.com'; // Replace with the user's email address
-        const gravatarDefault = 'https://example.com/default-avatar.jpg'; // Replace with your default avatar URL
-        this.gravatarUrl = `https://www.gravatar.com/avatar/${this.getMD5(userEmail)}?s=80&d=${gravatarDefault}`;
+        this.location = location;
+        this.navClass = 'navbar-area navbar-area-with-position-relative';
+        this.navContainer = 'container-fluid';
+        this.logo = 'assets/img/black-logo.png';
+    
         this.router.events
             .subscribe((event) => {
                 if (event instanceof NavigationEnd) {
@@ -78,24 +79,6 @@ export class HeaderComponent implements OnInit {
         console.log(`isLoggedIn response ==>`, this.isLoggedIn)
     }
 
-
-    getMD5(email: string): string {
-        if (typeof email !== 'string') {
-            throw new Error('Email must be a string');
-        }
-
-        if (!email.trim()) {
-            throw new Error('Email cannot be empty');
-        }
-
-        try {
-            const md5 = crypto.createHash('md5');
-            md5.update(email.toLowerCase().trim());
-            return md5.digest('hex');
-        } catch (error) {
-            throw new Error(`Failed to generate MD5 hash: ${error.message}`);
-        }
-    }
 
     logout(): void {
         this.authService.logout();
