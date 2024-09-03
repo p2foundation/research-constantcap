@@ -17,6 +17,8 @@ import { HomeSevenComponent } from './components/pages/home-seven/home-seven.com
 import { LoginComponent } from './components/pages/login/login.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
 import { AuthGuard } from './Services/auth/auth.guard.service';
+import { ResearhAiComponent } from './components/research-ai/researh-ai.component';
+import { ReportComponent } from './components/report/report.component';
 
 const routes: Routes = [
     {path: '', component: HomeSevenComponent},
@@ -50,8 +52,8 @@ const routes: Routes = [
         component: MarketDataComponent,
         canActivate: [AuthGuard]
     },
-    // {path: 'report', component: ProjectDetailsComponent},
-    // {path: 'ai', component: ProjectDetailsComponent},
+    {path: 'report', component: ReportComponent},
+    {path: 'ai', component: ResearhAiComponent},
     // {path: 'admin', component: ProjectDetailsComponent},
     // Here add new pages component
     {path: 'login', component: LoginComponent},
